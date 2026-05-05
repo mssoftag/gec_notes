@@ -204,16 +204,19 @@
       box-shadow: 0 6px 20px rgba(34, 54, 73, 0.06);
     }
 
+    /* 🔥 HIER IST DIE ÄNDERUNG */
     .feature-list {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
+      column-count: 2;
+      column-gap: 14px;
       margin: 0;
       padding: 0;
       list-style: none;
     }
 
     .feature-list li {
+      break-inside: avoid;
+      margin-bottom: 14px;
+
       position: relative;
       padding: 14px 16px 14px 44px;
       min-height: 52px;
@@ -274,9 +277,13 @@
         flex-direction: column;
       }
 
-      .meta-grid,
-      .feature-list {
+      .meta-grid {
         grid-template-columns: 1fr;
+      }
+
+      /* 🔥 Mobile: nur eine Spalte */
+      .feature-list {
+        column-count: 1;
       }
 
       .meta-grid {
