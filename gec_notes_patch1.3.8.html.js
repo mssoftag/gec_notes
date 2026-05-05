@@ -15,7 +15,7 @@ const releaseNotes = {
 
   features: [
     "Feature 1 Laasdfasdfasdfasdfas asdfasdfasdfasd asdfasdfasdf asdfasdfasdf asdfasdfsa asdfasdf",
-    "Feature 2",
+    "Feature 2sss",
     "Feature 3",
     "Feature 4"
   ],
