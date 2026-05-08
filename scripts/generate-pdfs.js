@@ -12,9 +12,13 @@ async function main() {
       file.endsWith(".html")
     );
 
-  const browser = await puppeteer.launch({
-    headless: "new"
-  });
+const browser = await puppeteer.launch({
+  headless: "new",
+  args: [
+    "--no-sandbox",
+    "--disable-setuid-sandbox"
+  ]
+});
 
   for (const htmlFile of htmlFiles) {
 
