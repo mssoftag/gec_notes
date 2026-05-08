@@ -23,6 +23,8 @@ jobs:
 
       - run: npm install
 
+      - run: npx puppeteer browsers install chrome
+
       - run: npm run generate-pdfs
 
       - uses: stefanzweifel/git-auto-commit-action@v5
