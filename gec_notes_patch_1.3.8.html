@@ -1,0 +1,1618 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  />
+
+  <title>
+    GEC Release Notes
+  </title>
+
+  <style>
+    :root {
+      --sap-page-bg:
+        #fff1f1;
+
+      --sap-card-bg:
+        #ffffff;
+
+      --sap-feature-box-bg:
+        #fff7f7;
+
+      --sap-meta-box-bg:
+        #ffffff;
+
+      --sap-primary:
+        #d9363e;
+
+      --sap-primary-dark:
+        #d9363e;
+
+      --sap-text: #1d2d3e;
+      --sap-muted: #5b738b;
+      --sap-border: #d9e2ec;
+
+      --sap-success-bg: #e4f5e9;
+      --sap-success: #107e3e;
+
+      --sap-shadow:
+        0 16px 42px rgba(34, 54, 73, 0.12);
+
+      --sap-radius-lg: 24px;
+      --sap-radius-md: 16px;
+      --sap-radius-sm: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--sap-page-bg);
+      color: var(--sap-text);
+
+      font-family:
+        "72",
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+
+.page-shell {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  transform: scale(1);
+  transform-origin: top center;
+}
+
+    .release-card {
+      overflow: hidden;
+      background: var(--sap-card-bg);
+
+      border:
+        1px solid rgba(217, 226, 236, 0.9);
+
+      border-radius: var(--sap-radius-lg);
+
+      box-shadow: var(--sap-shadow);
+    }
+
+    .hero {
+      position: relative;
+
+      padding: 36px 40px 34px;
+
+      background:
+        radial-gradient(
+          circle at 90% 10%,
+          rgba(255,255,255,0.18),
+          transparent 28%
+        ),
+        linear-gradient(
+          135deg,
+          var(--sap-primary) 0%,
+          var(--sap-primary-dark) 100%
+        );
+
+      color: #ffffff;
+    }
+
+    .brand-row {
+      position: relative;
+      z-index: 1;
+
+      display: flex;
+      align-items: center;
+      gap: 24px;
+
+      margin-bottom: 34px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      padding: 8px 13px;
+
+      border-radius: 999px;
+
+      background:
+        rgba(255,255,255,0.16);
+
+      border:
+        1px solid rgba(255,255,255,0.28);
+
+      color: #ffffff;
+
+      font-size: 13px;
+      font-weight: 700;
+
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+
+      border-radius: 50%;
+
+      background: #8bea8b;
+
+      box-shadow:
+        0 0 0 4px rgba(139,234,139,0.2);
+    }
+
+    .hero h1 {
+      position: relative;
+      z-index: 1;
+
+      margin: 0;
+font-family: Arial, sans-serif;
+      font-size:
+        54px;
+
+      line-height: 1.05;
+
+      letter-spacing: -0.04em;
+      font-weight: 800;
+
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+
+    .hero h1 span {
+      display: inline-block;
+      color: #d7ebff;
+    }
+
+    .hero-subtitle {
+      position: relative;
+      z-index: 1;
+
+      max-width: 620px;
+
+      margin: 16px 0 0;
+font-family: Arial, sans-serif;
+      color:
+        rgba(255,255,255,0.82);
+
+      font-size:
+        17px;
+
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+
+    .content {
+      padding: 34px 40px 40px;
+
+      background:
+        linear-gradient(
+          180deg,
+          var(--sap-card-bg) 0%,
+          #fbfcfd 100%
+        );
+    }
+
+    .meta-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 16px;
+
+      margin-top: -62px;
+      margin-bottom: 34px;
+
+      position: relative;
+      z-index: 2;
+    }
+
+    .meta-card {
+      padding: 20px 22px;
+
+      background: var(--sap-meta-box-bg);
+
+      border:
+        1px solid var(--sap-border);
+
+      border-radius: var(--sap-radius-md);
+
+      box-shadow:
+        0 10px 28px rgba(34,54,73,0.08);
+
+      overflow: hidden;
+    }
+
+    .meta-label {
+      margin: 0 0 6px;
+
+      color: var(--sap-muted);
+font-family: Arial, sans-serif;
+      font-size:
+        12px;
+
+      font-weight: 800;
+
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .meta-value {
+      margin: 0;
+
+      color: var(--sap-text);
+font-family: Arial, sans-serif;
+      font-size:
+        22px;
+
+      font-weight: 800;
+
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+
+    h2 {
+      margin: 0 0 18px;
+
+      color: var(--sap-text);
+font-family: Arial, sans-serif;
+      font-size:
+        24px;
+
+      letter-spacing: -0.02em;
+    }
+
+    .feature-section {
+      margin-bottom: 34px;
+    }
+
+    .feature-panel {
+      padding: 24px;
+
+      background: var(--sap-card-bg);
+
+      border:
+        1px solid var(--sap-border);
+
+      border-radius: var(--sap-radius-md);
+
+      box-shadow:
+        0 6px 20px rgba(34,54,73,0.06);
+    }
+
+    .feature-list {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 16px;
+
+      margin: 0;
+      padding: 0;
+
+      list-style: none;
+    }
+
+    .feature-card {
+      position: relative;
+
+      display: flex;
+      flex-direction: column;
+
+      padding: 18px 18px 18px 50px;
+
+      background:
+        var(--sap-feature-box-bg);
+
+      border:
+        1px solid #e3edf7;
+
+      border-radius: var(--sap-radius-sm);
+
+      min-height: 90px;
+
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: "✓";
+
+      position: absolute;
+
+      left: 16px;
+      top: 18px;
+
+      width: 22px;
+      height: 22px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background: var(--sap-success-bg);
+      color: var(--sap-success);
+
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .feature-card-title {
+      font-size:
+        15px;
+font-family: Arial, sans-serif;
+      font-weight: 700;
+      color: var(--sap-text);
+
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+	
+.feature-card-meta {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
+  max-width: 38%;
+  padding: 4px 8px;
+
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid var(--sap-border);
+
+  color: var(--sap-muted);
+
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+    .feature-card-link {
+      color: var(--sap-primary);
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .feature-card-link:hover {
+      text-decoration: underline;
+    }
+
+    .sub-feature-list {
+      margin: 12px 0 0;
+      padding-left: 18px;
+
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sub-feature-item {
+      color: var(--sap-muted);
+font-family: Arial, sans-serif;
+      font-size:
+        15px;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+font-family: Arial, sans-serif;
+      gap: 18px;
+
+      margin-top: 30px;
+      padding-top: 22px;
+
+      border-top:
+        1px solid var(--sap-border);
+
+      color: var(--sap-muted);
+
+      font-size:
+        13px;
+    }
+	
+	    /* =========================
+       VARIANTE: COMPACT REPORT
+    ========================= */
+
+    body.variant-compact .page-shell {
+      max-width: 980px;
+    }
+
+    body.variant-compact .release-card {
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    body.variant-compact .hero {
+      padding: 28px 34px;
+    }
+
+    body.variant-compact .content {
+      padding: 28px 34px 34px;
+    }
+
+    body.variant-compact .meta-grid {
+      margin-top: 0;
+    }
+
+    body.variant-compact .feature-panel {
+      padding: 0;
+      border: none;
+      box-shadow: none;
+      background: transparent;
+    }
+
+    body.variant-compact .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--sap-border);
+      border-radius: var(--sap-radius-md);
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+body.variant-compact .feature-card {
+  padding: 18px 22px;
+  border: none;
+  border-bottom: 1px solid var(--sap-border);
+  border-radius: 0;
+  background: #ffffff;
+  min-height: auto;
+}
+
+body.variant-compact .feature-card-with-link {
+  display: block;
+}
+
+body.variant-compact .feature-card-structured {
+  display: block;
+}
+
+body.variant-compact .feature-card-structured .sub-feature-list {
+  margin: 8px 0 0 22px;
+  padding-left: 16px;
+}
+
+    body.variant-compact .feature-card:last-child {
+      border-bottom: none;
+    }
+
+    body.variant-compact .feature-card::before {
+      display: none;
+    }
+
+    body.variant-compact .feature-card-title {
+      color: var(--sap-primary);
+      font-weight: 800;
+    }
+
+    body.variant-compact .sub-feature-list {
+      margin: 0;
+    }
+
+    /* =========================
+       VARIANTE: MAGAZINE
+    ========================= */
+
+    body.variant-magazine .page-shell {
+      max-width: 1180px;
+    }
+
+    body.variant-magazine .release-card {
+      border-radius: 30px;
+      background: #ffffff;
+    }
+
+    body.variant-magazine .hero {
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 56px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.26), transparent 32%),
+        radial-gradient(circle at 90% 0%, rgba(255,255,255,0.18), transparent 34%),
+        linear-gradient(135deg, var(--sap-primary) 0%, #1d2d3e 100%);
+    }
+
+    body.variant-magazine .content {
+      padding: 44px 48px 48px;
+      background: #ffffff;
+    }
+
+    body.variant-magazine .meta-grid {
+      margin-top: -84px;
+      margin-bottom: 42px;
+    }
+
+    body.variant-magazine .feature-section {
+      padding: 30px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, #f7fafd 0%, #ffffff 100%);
+      border: 1px solid var(--sap-border);
+    }
+
+    body.variant-magazine .feature-panel {
+      padding: 0;
+      border: none;
+      box-shadow: none;
+      background: transparent;
+    }
+
+    body.variant-magazine .feature-list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    body.variant-magazine .feature-card {
+      padding: 22px;
+      border-radius: 22px;
+      min-height: 150px;
+      box-shadow: 0 10px 28px rgba(34, 54, 73, 0.08);
+    }
+
+body.variant-magazine .feature-card::before {
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  margin-bottom: 0;
+}
+body.variant-magazine .feature-card {
+  padding-left: 56px;
+}
+
+/* =========================
+   VARIANTE: SOFTWAY RED
+========================= */
+
+body.variant-softway-red {
+  background: #f7f2f0;
+}
+
+body.variant-softway-red .page-shell {
+  max-width: 1080px;
+}
+
+body.variant-softway-red .release-card {
+  border-radius: 28px;
+  border: 1px solid #ead8d3;
+  box-shadow: 0 18px 48px rgba(145, 36, 29, 0.14);
+}
+
+body.variant-softway-red .hero {
+  background:
+    radial-gradient(circle at 85% 18%, rgba(255,255,255,0.22), transparent 30%),
+    linear-gradient(135deg, var(--sap-primary) 0%, var(--sap-primary-dark) 100%);
+}
+
+body.variant-softway-red .badge {
+  background: rgba(255,255,255,0.18);
+}
+
+body.variant-softway-red .content {
+  background: #fffaf8;
+}
+
+body.variant-softway-red .meta-grid {
+  margin-top: -54px;
+}
+
+body.variant-softway-red .feature-panel {
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+body.variant-softway-red .feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+body.variant-softway-red .feature-card {
+  min-height: auto;
+  padding: 20px 24px 20px 62px;
+  border-radius: 18px;
+  background: #ffffff;
+  border: 1px solid #efd7d2;
+  box-shadow: 0 8px 22px rgba(145, 36, 29, 0.08);
+}
+
+body.variant-softway-red .feature-card::before {
+  content: "✓";
+  background: #fde8e5;
+  color: var(--sap-primary);
+}
+
+body.variant-softway-red .feature-card-link,
+body.variant-softway-red .feature-card-title {
+  color: var(--sap-primary);
+}
+
+/* =========================
+   VARIANTE: SOFTWAY BLUE
+========================= */
+
+body.variant-softway-blue {
+  background: #eef4f8;
+}
+
+body.variant-softway-blue .page-shell {
+  max-width: 1080px;
+}
+
+body.variant-softway-blue .release-card {
+  border-radius: 28px;
+  border: 1px solid #d7e5ee;
+  box-shadow: 0 18px 48px rgba(36, 76, 112, 0.16);
+}
+
+body.variant-softway-blue .hero {
+  background:
+    radial-gradient(circle at 85% 18%, rgba(255,255,255,0.18), transparent 30%),
+    linear-gradient(135deg, var(--sap-primary) 0%, var(--sap-primary-dark) 100%);
+}
+
+body.variant-softway-blue .content {
+  background: #f8fbfd;
+}
+
+body.variant-softway-blue .meta-grid {
+  margin-top: -54px;
+}
+
+body.variant-softway-blue .feature-panel {
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+body.variant-softway-blue .feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+body.variant-softway-blue .feature-card {
+  min-height: auto;
+  padding: 20px 24px 20px 62px;
+  border-radius: 18px;
+  background: #ffffff;
+  border: 1px solid #d7e5ee;
+  box-shadow: 0 8px 22px rgba(36, 76, 112, 0.08);
+}
+
+body.variant-softway-blue .feature-card::before {
+  content: "✓";
+  background: #e4f0f8;
+  color: var(--sap-primary);
+}
+
+body.variant-softway-blue .feature-card-link,
+body.variant-softway-blue .feature-card-title {
+  color: var(--sap-primary);
+}
+
+    @media (max-width: 720px) {
+      .meta-grid,
+      .feature-list,
+      body.variant-magazine .feature-list {
+        grid-template-columns: 1fr;
+      }
+
+      body.variant-compact .feature-card {
+        display: block;
+      }
+    }
+	
+	
+	
+  </style>
+</head>
+
+<body class="variant-softway-red">
+  <main class="page-shell">
+    <article class="release-card">
+
+      <header class="hero">
+
+        <div class="brand-row">
+          <div class="badge">
+            <span class="badge-dot"></span>
+
+            <span>
+              Notes
+            </span>
+          </div>
+        </div>
+
+        <h1>
+          What&#039;s New in
+
+          <span>
+            Patch 1.3.8
+          </span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Modernisierung &amp; Verbesserungen
+        </p>
+
+      </header>
+
+      <section class="content">
+
+        <div class="meta-grid">
+
+          <div class="meta-card">
+            <p class="meta-label">
+              Start Date
+            </p>
+
+            <p class="meta-value">
+              01.01.2026
+            </p>
+          </div>
+
+          <div class="meta-card">
+            <p class="meta-label">
+              Release Date
+            </p>
+
+            <p class="meta-value">
+              31.12.2026
+            </p>
+          </div>
+
+        </div>
+
+        
+        <section
+          class="feature-section"
+          id="feature-section-0"
+        >
+          <h2>
+            Technical Improvements
+          </h2>
+
+          <section class="feature-panel">
+            <ul class="feature-list">
+              
+      <li
+        id="feature-0-0"
+        class="feature-card feature-card-with-link"
+      >
+        <div class="feature-card-title">
+          
+          <a
+            class="feature-card-link"
+            href="https://softway-ag.atlassian.net/browse/SSPF-2932"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            SSPF-2932
+          </a>
+        
+        </div>
+		
+      <span class="feature-card-meta">
+        CA Customizing Transaktion
+      </span>
+    
+
+        
+              <ul class="sub-feature-list">
+                
+                  <li class="sub-feature-item">
+                    <span class="sub-feature-text">
+                      Inaktive Einträge im SSP Forms Customizing werden farblich hervorgehoben
+                    </span>
+                  </li>
+                
+              </ul>
+            
+      </li>
+    
+      <li
+        id="feature-0-1"
+        class="feature-card feature-card-with-link"
+      >
+        <div class="feature-card-title">
+          
+          <a
+            class="feature-card-link"
+            href="https://softway-ag.atlassian.net/browse/SSPF-2943"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            SSPF-2943
+          </a>
+        
+        </div>
+		
+      <span class="feature-card-meta">
+        CA Customizing Transaktionen
+      </span>
+    
+
+        
+              <ul class="sub-feature-list">
+                
+                  <li class="sub-feature-item">
+                    <span class="sub-feature-text">
+                      Anzeige des Logos als Vorschau im Detailbild der Grafikpflege
+                    </span>
+                  </li>
+                
+              </ul>
+            
+      </li>
+    
+      <li
+        id="feature-0-2"
+        class="feature-card feature-card-with-link"
+      >
+        <div class="feature-card-title">
+          
+          <a
+            class="feature-card-link"
+            href="https://softway-ag.atlassian.net/browse/SSPF-2904"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            SSPF-2904
+          </a>
+        
+        </div>
+		
+      <span class="feature-card-meta">
+        CA Customizing Transaktionen
+      </span>
+    
+
+        
+              <ul class="sub-feature-list">
+                
+                  <li class="sub-feature-item">
+                    <span class="sub-feature-text">
+                      Die Verarbeitung von Literalen und Zahlen für das Feld Source im Customizing von Infostrukturen ist nun möglich
+                    </span>
+                  </li>
+                
+              </ul>
+            
+      </li>
+    
+      <li
+        id="feature-0-3"
+        class="feature-card feature-card-with-link"
+      >
+        <div class="feature-card-title">
+          
+          <a
+            class="feature-card-link"
+            href="https://softway-ag.atlassian.net/browse/SSPF-2898"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            SSPF-2898
+          </a>
+        
+        </div>
+		
+      <span class="feature-card-meta">
+        CA Customizing Transaktionen
+      </span>
+    
+
+        
+              <ul class="sub-feature-list">
+                
+                  <li class="sub-feature-item">
+                    <span class="sub-feature-text">
+                      GTM für die Pflegeoberflächen ist nun standardmäßig eingeschaltet
+                    </span>
+                  </li>
+                
+              </ul>
+            
+      </li>
+    
+      <li
+        id="feature-0-4"
+        class="feature-card feature-card-with-link"
+      >
+        <div class="feature-card-title">
+          
+          <a
+            class="feature-card-link"
+            href="https://softway-ag.atlassian.net/browse/SSPF-2887"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            SSPF-2887
+          </a>
+        
+        </div>
+		
+      <span class="feature-card-meta">
+        CA Customizing Transaktionen
+      </span>
+    
+
+        
+              <ul class="sub-feature-list">
+                
+                  <li class="sub-feature-item">
+                    <span class="sub-feature-text">
+                      Mehrere SO10 Texte können aus dem SSP Forms Customizing in einen Transport aufgenommen werden
+                    </span>
+                  </li>
+                
+              </ul>
+            
+      </li>
+    
+      <li
+        id="feature-0-5"
+        class="feature-card feature-card-with-link"
+      >
+        <div class="feature-card-title">
+          
+          <a
+            class="feature-card-link"
+            href="https://softway-ag.atlassian.net/browse/SSPF-2938"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            SSPF-2938
+          </a>
+        
+        </div>
+		
+      <span class="feature-card-meta">
+        CA FormCopy
+      </span>
+    
+
+        
+              <ul class="sub-feature-list">
+                
+                  <li class="sub-feature-item">
+                    <span class="sub-feature-text">
+                      Pflege der Bezeichnung von Modul und Applikation
+                    </span>
+                  </li>
+                
+              </ul>
+            
+      </li>
+    
+      <li
+        id="feature-0-6"
+        class="feature-card feature-card-with-link"
+      >
+        <div class="feature-card-title">
+          
+          <a
+            class="feature-card-link"
+            href="https://softway-ag.atlassian.net/browse/SSPF-2899"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            SSPF-2899
+          </a>
+        
+        </div>
+		
+      <span class="feature-card-meta">
+        CA Wizard
+      </span>
+    
+
+        
+              <ul class="sub-feature-list">
+                
+                  <li class="sub-feature-item">
+                    <span class="sub-feature-text">
+                      Die ADS Erreichbarkeit wird vor dem Start des CA Wizards geprüft
+                    </span>
+                  </li>
+                
+              </ul>
+            
+      </li>
+    
+      <li
+        id="feature-0-7"
+        class="feature-card feature-card-with-link"
+      >
+        <div class="feature-card-title">
+          
+          <a
+            class="feature-card-link"
+            href="https://softway-ag.atlassian.net/browse/SSPF-3005"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            SSPF-3005
+          </a>
+        
+        </div>
+		
+      <span class="feature-card-meta">
+        CA Übergreifend
+      </span>
+    
+
+        
+              <ul class="sub-feature-list">
+                
+                  <li class="sub-feature-item">
+                    <span class="sub-feature-text">
+                      Überarbeitung des XML Vergleichers
+                    </span>
+                  </li>
+                
+              </ul>
+            
+      </li>
+    
+      <li
+        id="feature-0-8"
+        class="feature-card feature-card-with-link"
+      >
+        <div class="feature-card-title">
+          
+          <a
+            class="feature-card-link"
+            href="https://softway-ag.atlassian.net/browse/SSPF-2944"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            SSPF-2944
+          </a>
+        
+        </div>
+		
+      <span class="feature-card-meta">
+        CA Übergreifend
+      </span>
+    
+
+        
+              <ul class="sub-feature-list">
+                
+                  <li class="sub-feature-item">
+                    <span class="sub-feature-text">
+                      Anzeige des SO10 Textes als Vorschau im Detailbild der Textpflege
+                    </span>
+                  </li>
+                
+              </ul>
+            
+      </li>
+    
+      <li
+        id="feature-0-9"
+        class="feature-card feature-card-with-link"
+      >
+        <div class="feature-card-title">
+          
+          <a
+            class="feature-card-link"
+            href="https://softway-ag.atlassian.net/browse/SSPF-2935"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            SSPF-2935
+          </a>
+        
+        </div>
+		
+      <span class="feature-card-meta">
+        CA Übergreifend
+      </span>
+    
+
+        
+              <ul class="sub-feature-list">
+                
+                  <li class="sub-feature-item">
+                    <span class="sub-feature-text">
+                      Wizard zum Anlegen von neuen Layouttypen
+                    </span>
+                  </li>
+                
+              </ul>
+            
+      </li>
+    
+      <li
+        id="feature-0-10"
+        class="feature-card feature-card-with-link"
+      >
+        <div class="feature-card-title">
+          
+          <a
+            class="feature-card-link"
+            href="https://softway-ag.atlassian.net/browse/SSPF-2933"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            SSPF-2933
+          </a>
+        
+        </div>
+		
+      <span class="feature-card-meta">
+        CA Übergreifend
+      </span>
+    
+
+        
+              <ul class="sub-feature-list">
+                
+                  <li class="sub-feature-item">
+                    <span class="sub-feature-text">
+                      Neue Funktion im Customizing um S010 Texte zu durchsuchen
+                    </span>
+                  </li>
+                
+              </ul>
+            
+      </li>
+    
+      <li
+        id="feature-0-11"
+        class="feature-card feature-card-with-link"
+      >
+        <div class="feature-card-title">
+          
+          <a
+            class="feature-card-link"
+            href="https://softway-ag.atlassian.net/browse/SSPF-2907"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            SSPF-2907
+          </a>
+        
+        </div>
+		
+      <span class="feature-card-meta">
+        CA Übergreifend
+      </span>
+    
+
+        
+              <ul class="sub-feature-list">
+                
+                  <li class="sub-feature-item">
+                    <span class="sub-feature-text">
+                      Report um SSP Customizing zu transportieren
+                    </span>
+                  </li>
+                
+              </ul>
+            
+      </li>
+    
+      <li
+        id="feature-0-12"
+        class="feature-card feature-card-with-link"
+      >
+        <div class="feature-card-title">
+          
+          <a
+            class="feature-card-link"
+            href="https://softway-ag.atlassian.net/browse/SSPF-2901"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            SSPF-2901
+          </a>
+        
+        </div>
+		
+      <span class="feature-card-meta">
+        CA Übergreifend
+      </span>
+    
+
+        
+              <ul class="sub-feature-list">
+                
+                  <li class="sub-feature-item">
+                    <span class="sub-feature-text">
+                      Neuer Button, um alle Texte zum Formular in einen Transport aufzunehmen
+                    </span>
+                  </li>
+                
+              </ul>
+            
+      </li>
+    
+      <li
+        id="feature-0-13"
+        class="feature-card feature-card-with-link"
+      >
+        <div class="feature-card-title">
+          
+          <a
+            class="feature-card-link"
+            href="https://softway-ag.atlassian.net/browse/SSPF-2895"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            SSPF-2895
+          </a>
+        
+        </div>
+		
+      <span class="feature-card-meta">
+        CA Übergreifend
+      </span>
+    
+
+        
+              <ul class="sub-feature-list">
+                
+                  <li class="sub-feature-item">
+                    <span class="sub-feature-text">
+                      Standartfilter in alle Pflegeoberflächen integriert
+                    </span>
+                  </li>
+                
+              </ul>
+            
+      </li>
+    
+      <li
+        id="feature-0-14"
+        class="feature-card feature-card-with-link"
+      >
+        <div class="feature-card-title">
+          
+          <a
+            class="feature-card-link"
+            href="https://softway-ag.atlassian.net/browse/SSPF-2888"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            SSPF-2888
+          </a>
+        
+        </div>
+		
+      <span class="feature-card-meta">
+        CA Übergreifend
+      </span>
+    
+
+        
+              <ul class="sub-feature-list">
+                
+                  <li class="sub-feature-item">
+                    <span class="sub-feature-text">
+                      Neues BAdI zur Ermittlung von SO10-Texten
+                    </span>
+                  </li>
+                
+              </ul>
+            
+      </li>
+    
+            </ul>
+          </section>
+        </section>
+      
+        <section
+          class="feature-section"
+          id="feature-section-1"
+        >
+          <h2>
+            Bug Fixes
+          </h2>
+
+          <section class="feature-panel">
+            <ul class="feature-list">
+              
+      <li
+        id="feature-1-0"
+        class="feature-card feature-card-with-link"
+      >
+        <div class="feature-card-title">
+          
+          <a
+            class="feature-card-link"
+            href="https://softway-ag.atlassian.net/browse/SSPF-2900"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            SSPF-2900
+          </a>
+        
+        </div>
+		
+      <span class="feature-card-meta">
+        CA Beschriftungstool
+      </span>
+    
+
+        
+              <ul class="sub-feature-list">
+                
+                  <li class="sub-feature-item">
+                    <span class="sub-feature-text">
+                      Korrektur beim Refresh des ALVs innerhalb der Pflege von Beschriftungen
+                    </span>
+                  </li>
+                
+              </ul>
+            
+      </li>
+    
+      <li
+        id="feature-1-1"
+        class="feature-card feature-card-with-link"
+      >
+        <div class="feature-card-title">
+          
+          <a
+            class="feature-card-link"
+            href="https://softway-ag.atlassian.net/browse/SSPF-2893"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            SSPF-2893
+          </a>
+        
+        </div>
+		
+      <span class="feature-card-meta">
+        CA Beschriftungstool
+      </span>
+    
+
+        
+              <ul class="sub-feature-list">
+                
+                  <li class="sub-feature-item">
+                    <span class="sub-feature-text">
+                      Korrektur bei der Einstellung des Filters für das aktuelle Formular, wenn eine Text-ID Suche durchgeführt wird
+                    </span>
+                  </li>
+                
+              </ul>
+            
+      </li>
+    
+      <li
+        id="feature-1-2"
+        class="feature-card feature-card-with-link"
+      >
+        <div class="feature-card-title">
+          
+          <a
+            class="feature-card-link"
+            href="https://softway-ag.atlassian.net/browse/SSPF-2936"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            SSPF-2936
+          </a>
+        
+        </div>
+		
+      <span class="feature-card-meta">
+        CA FormCopy
+      </span>
+    
+
+        
+              <ul class="sub-feature-list">
+                
+                  <li class="sub-feature-item">
+                    <span class="sub-feature-text">
+                      Korrektur bei der Vergabe des neuen Layouts. Suchhilfe deaktiviert.
+                    </span>
+                  </li>
+                
+              </ul>
+            
+      </li>
+    
+      <li
+        id="feature-1-3"
+        class="feature-card feature-card-with-link"
+      >
+        <div class="feature-card-title">
+          
+          <a
+            class="feature-card-link"
+            href="https://softway-ag.atlassian.net/browse/SSPF-2931"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            SSPF-2931
+          </a>
+        
+        </div>
+		
+      <span class="feature-card-meta">
+        CA Übergreifend
+      </span>
+    
+
+        
+              <ul class="sub-feature-list">
+                
+                  <li class="sub-feature-item">
+                    <span class="sub-feature-text">
+                      Korrektur beim Auslesen des Formularkontext
+                    </span>
+                  </li>
+                
+              </ul>
+            
+      </li>
+    
+      <li
+        id="feature-1-4"
+        class="feature-card feature-card-with-link"
+      >
+        <div class="feature-card-title">
+          
+          <a
+            class="feature-card-link"
+            href="https://softway-ag.atlassian.net/browse/SSPF-2953"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            SSPF-2953
+          </a>
+        
+        </div>
+		
+      <span class="feature-card-meta">
+        Etikett GS1
+      </span>
+    
+
+        
+              <ul class="sub-feature-list">
+                
+                  <li class="sub-feature-item">
+                    <span class="sub-feature-text">
+                      Korrektur im Demo Programm Für GS1 Etiketten
+                    </span>
+                  </li>
+                
+              </ul>
+            
+      </li>
+    
+      <li
+        id="feature-1-5"
+        class="feature-card feature-card-with-link"
+      >
+        <div class="feature-card-title">
+          
+          <a
+            class="feature-card-link"
+            href="https://softway-ag.atlassian.net/browse/SSPF-2927"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            SSPF-2927
+          </a>
+        
+        </div>
+		
+      <span class="feature-card-meta">
+        SD Auftrag
+      </span>
+    
+
+        
+              <ul class="sub-feature-list">
+                
+                  <li class="sub-feature-item">
+                    <span class="sub-feature-text">
+                      Korrektur innerhalb der Methode redefinierten Methode BUILD_REF_TABS
+                    </span>
+                  </li>
+                
+              </ul>
+            
+      </li>
+    
+      <li
+        id="feature-1-6"
+        class="feature-card feature-card-with-link"
+      >
+        <div class="feature-card-title">
+          
+          <a
+            class="feature-card-link"
+            href="https://softway-ag.atlassian.net/browse/SSPF-2956"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            SSPF-2956
+          </a>
+        
+        </div>
+		
+      <span class="feature-card-meta">
+        SD Faktura
+      </span>
+    
+
+        
+              <ul class="sub-feature-list">
+                
+                  <li class="sub-feature-item">
+                    <span class="sub-feature-text">
+                      Korrektur im Customizing
+                    </span>
+                  </li>
+                
+              </ul>
+            
+      </li>
+    
+            </ul>
+          </section>
+        </section>
+      
+
+        <footer class="footer">
+
+          <span>
+            <strong>
+              Product Management SSP Forms
+            </strong>
+          </span>
+
+          <span>
+            Generated on:
+            12.05.2026
+          </span>
+
+        </footer>
+
+      </section>
+    </article>
+  </main>
+<script id="release-notes-editor-data" type="application/json">
+{"releaseNotes":{"pageTitle":"GEC Release Notes","badge":"Notes","titlePrefix":"What's New in","patchVersion":"Patch 1.3.8","subtitle":"Modernisierung & Verbesserungen","startDateLabel":"Start Date","startDate":"01.01.2026","releaseDateLabel":"Release Date","releaseDate":"31.12.2026","featureTitle":"Release Notes","sections":[{"title":"Technical Improvements","type":"feature","items":[{"title":"SSPF-2932","link":"https://softway-ag.atlassian.net/browse/SSPF-2932","meta":"CA Customizing Transaktion","children":["Inaktive Einträge im SSP Forms Customizing werden farblich hervorgehoben"]},{"title":"SSPF-2943","link":"https://softway-ag.atlassian.net/browse/SSPF-2943","meta":"CA Customizing Transaktionen","children":["Anzeige des Logos als Vorschau im Detailbild der Grafikpflege"]},{"title":"SSPF-2904","link":"https://softway-ag.atlassian.net/browse/SSPF-2904","meta":"CA Customizing Transaktionen","children":["Die Verarbeitung von Literalen und Zahlen für das Feld Source im Customizing von Infostrukturen ist nun möglich"]},{"title":"SSPF-2898","link":"https://softway-ag.atlassian.net/browse/SSPF-2898","meta":"CA Customizing Transaktionen","children":["GTM für die Pflegeoberflächen ist nun standardmäßig eingeschaltet"]},{"title":"SSPF-2887","link":"https://softway-ag.atlassian.net/browse/SSPF-2887","meta":"CA Customizing Transaktionen","children":["Mehrere SO10 Texte können aus dem SSP Forms Customizing in einen Transport aufgenommen werden"]},{"title":"SSPF-2938","link":"https://softway-ag.atlassian.net/browse/SSPF-2938","meta":"CA FormCopy","children":["Pflege der Bezeichnung von Modul und Applikation"]},{"title":"SSPF-2899","link":"https://softway-ag.atlassian.net/browse/SSPF-2899","meta":"CA Wizard","children":["Die ADS Erreichbarkeit wird vor dem Start des CA Wizards geprüft"]},{"title":"SSPF-3005","link":"https://softway-ag.atlassian.net/browse/SSPF-3005","meta":"CA Übergreifend","children":["Überarbeitung des XML Vergleichers"]},{"title":"SSPF-2944","link":"https://softway-ag.atlassian.net/browse/SSPF-2944","meta":"CA Übergreifend","children":["Anzeige des SO10 Textes als Vorschau im Detailbild der Textpflege"]},{"title":"SSPF-2935","link":"https://softway-ag.atlassian.net/browse/SSPF-2935","meta":"CA Übergreifend","children":["Wizard zum Anlegen von neuen Layouttypen"]},{"title":"SSPF-2933","link":"https://softway-ag.atlassian.net/browse/SSPF-2933","meta":"CA Übergreifend","children":["Neue Funktion im Customizing um S010 Texte zu durchsuchen"]},{"title":"SSPF-2907","link":"https://softway-ag.atlassian.net/browse/SSPF-2907","meta":"CA Übergreifend","children":["Report um SSP Customizing zu transportieren"]},{"title":"SSPF-2901","link":"https://softway-ag.atlassian.net/browse/SSPF-2901","meta":"CA Übergreifend","children":["Neuer Button, um alle Texte zum Formular in einen Transport aufzunehmen"]},{"title":"SSPF-2895","link":"https://softway-ag.atlassian.net/browse/SSPF-2895","meta":"CA Übergreifend","children":["Standartfilter in alle Pflegeoberflächen integriert"]},{"title":"SSPF-2888","link":"https://softway-ag.atlassian.net/browse/SSPF-2888","meta":"CA Übergreifend","children":["Neues BAdI zur Ermittlung von SO10-Texten"]}]},{"title":"Bug Fixes","type":"feature","items":[{"title":"SSPF-2900","link":"https://softway-ag.atlassian.net/browse/SSPF-2900","meta":"CA Beschriftungstool","children":["Korrektur beim Refresh des ALVs innerhalb der Pflege von Beschriftungen"]},{"title":"SSPF-2893","link":"https://softway-ag.atlassian.net/browse/SSPF-2893","meta":"CA Beschriftungstool","children":["Korrektur bei der Einstellung des Filters für das aktuelle Formular, wenn eine Text-ID Suche durchgeführt wird"]},{"title":"SSPF-2936","link":"https://softway-ag.atlassian.net/browse/SSPF-2936","meta":"CA FormCopy","children":["Korrektur bei der Vergabe des neuen Layouts. Suchhilfe deaktiviert."]},{"title":"SSPF-2931","link":"https://softway-ag.atlassian.net/browse/SSPF-2931","meta":"CA Übergreifend","children":["Korrektur beim Auslesen des Formularkontext"]},{"title":"SSPF-2953","link":"https://softway-ag.atlassian.net/browse/SSPF-2953","meta":"Etikett GS1","children":["Korrektur im Demo Programm Für GS1 Etiketten"]},{"title":"SSPF-2927","link":"https://softway-ag.atlassian.net/browse/SSPF-2927","meta":"SD Auftrag","children":["Korrektur innerhalb der Methode redefinierten Methode BUILD_REF_TABS"]},{"title":"SSPF-2956","link":"https://softway-ag.atlassian.net/browse/SSPF-2956","meta":"SD Faktura","children":["Korrektur im Customizing"]}]}],"footerOwner":"Product Management SSP Forms","generatedOnLabel":"Generated on:","generatedOn":"12.05.2026"},"theme":{"zoom":100,"jiraLinksEnabled":true,"effectiveZoom":100,"fitMode":"manual","templateVariant":"softwayRed","colorPreset":"red","primaryColor":"#d9363e","backgroundColor":"#fff1f1","cardColor":"#ffffff","featureBoxColor":"#fff7f7","metaBoxColor":"#ffffff","metaBadgeColor":"#ffffff","titleSize":54,"subtitleSize":17,"metaLabelSize":12,"metaSize":22,"sectionTitleSize":24,"featureTitleSize":15,"subFeatureSize":15,"footerSize":13,"metaBadgeSize":11,"titleFamily":"Arial, sans-serif","subtitleFamily":"Arial, sans-serif","metaLabelFamily":"Arial, sans-serif","metaFamily":"Arial, sans-serif","sectionTitleFamily":"Arial, sans-serif","featureTitleFamily":"Arial, sans-serif","subFeatureFamily":"Arial, sans-serif","footerFamily":"Arial, sans-serif","metaBadgeFamily":"Arial, sans-serif"}}
+</script>
+</body>
+</html>
+  
