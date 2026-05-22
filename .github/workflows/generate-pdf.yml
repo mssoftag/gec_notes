@@ -5,7 +5,9 @@ on:
     branches:
       - main
     paths:
-      - "gec_notes_patch*.html"
+      - "gec_notes_*.html"
+
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -15,19 +17,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 22
 
-      - run: npm install
+      - name: Install Dependencies
+        run: npm install
 
-      - run: npx puppeteer browsers install chrome
+      - name: Install Chrome for Puppeteer
+        run: npx puppeteer browsers install chrome
 
-      - run: npm run generate-pdfs
+      - name: Generate PDFs
+        run: npm run generate-pdfs
 
-      - uses: stefanzweifel/git-auto-commit-action@v5
+      - name: Commit generated PDFs
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Generate PDF release notes
           file_pattern: "*.pdf"
