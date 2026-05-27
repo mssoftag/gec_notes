@@ -1,0 +1,386 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GEC Release Notes - PDF</title>
+
+  <style>
+    :root {
+      --pdf-primary: #d9363e;
+      --pdf-text: #1d2d3e;
+      --pdf-muted: #5b738b;
+      --pdf-border: #d9e2ec;
+      --pdf-bg: #eef3f8;
+      --pdf-card: #ffffff;
+      --pdf-soft: #f7fafd;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--pdf-text);
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      line-height: 1.45;
+      background: var(--pdf-bg);
+    }
+
+    .pdf-document {
+      width: 190mm;
+      margin: 0 auto;
+      padding: 12mm 0;
+    }
+
+    .pdf-page-surface {
+      background: var(--pdf-card);
+      border: 1px solid var(--pdf-border);
+      border-radius: 8mm;
+      overflow: hidden;
+      box-shadow: 0 10px 28px rgba(34, 54, 73, 0.12);
+    }
+
+    .pdf-hero {
+      padding: 16mm 16mm 14mm;
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--pdf-primary), #1d2d3e);
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .pdf-badge {
+      display: inline-block;
+      margin-bottom: 9mm;
+      padding: 2.5mm 5mm;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.16);
+      font-size: 9pt;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .pdf-hero h1 {
+      margin: 0;
+      font-size: 28pt;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .pdf-hero h1 span {
+      color: #d7ebff;
+    }
+
+    .pdf-subtitle {
+      margin: 5mm 0 0;
+      max-width: 145mm;
+      font-size: 11pt;
+      color: rgba(255,255,255,0.86);
+    }
+
+    .pdf-content {
+      padding: 11mm 14mm 13mm;
+    }
+
+    .pdf-meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6mm;
+      margin-bottom: 10mm;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .pdf-meta-card {
+      padding: 6mm;
+      border: 1px solid var(--pdf-border);
+      border-radius: 5mm;
+      background: #ffffff;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .pdf-meta-label {
+      margin: 0 0 2mm;
+      color: var(--pdf-muted);
+      font-size: 8pt;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .pdf-meta-value {
+      margin: 0;
+      font-size: 14pt;
+      font-weight: 800;
+    }
+
+    .pdf-section {
+      margin: 0 0 9mm;
+      break-before: auto;
+      page-break-before: auto;
+    }
+
+    .pdf-section h2 {
+      margin: 0 0 4mm;
+      padding-bottom: 2.5mm;
+      border-bottom: 1px solid var(--pdf-border);
+      color: var(--pdf-primary);
+      font-size: 15pt;
+      break-after: avoid;
+      page-break-after: avoid;
+    }
+
+    .pdf-card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4mm;
+    }
+
+    .pdf-feature-card {
+      padding: 5mm 6mm;
+      border: 1px solid var(--pdf-border);
+      border-radius: 4mm;
+      background: var(--pdf-soft);
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .pdf-feature-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 5mm;
+      break-after: avoid;
+      page-break-after: avoid;
+    }
+
+    .pdf-feature-card h3 {
+      margin: 0;
+      font-size: 11pt;
+      line-height: 1.35;
+    }
+
+    .pdf-feature-card a {
+      color: var(--pdf-primary);
+      text-decoration: none;
+    }
+
+    .pdf-meta-badge {
+      flex: 0 0 auto;
+      max-width: 50mm;
+      padding: 1.5mm 3mm;
+      border: 1px solid var(--pdf-border);
+      border-radius: 999px;
+      background: #ffffff;
+      color: var(--pdf-muted);
+      font-size: 8pt;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .pdf-feature-card ul {
+      margin: 3mm 0 0;
+      padding-left: 6mm;
+    }
+
+    .pdf-feature-card li {
+      margin: 0 0 1.5mm;
+      color: var(--pdf-muted);
+      font-size: 10pt;
+    }
+
+    .pdf-footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 8mm;
+      margin-top: 10mm;
+      padding-top: 5mm;
+      border-top: 1px solid var(--pdf-border);
+      color: var(--pdf-muted);
+      font-size: 9pt;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    @page {
+      size: A4;
+      margin: 12mm;
+    }
+
+    @media print {
+      html,
+      body {
+        background: #ffffff;
+      }
+
+      .pdf-document {
+        width: auto;
+        margin: 0;
+        padding: 0;
+      }
+
+      .pdf-page-surface {
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        overflow: visible;
+      }
+
+      .pdf-hero {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+
+      .pdf-content {
+        padding: 10mm 0 0;
+      }
+
+      .pdf-feature-card,
+      .pdf-meta-card,
+      .pdf-hero,
+      .pdf-footer {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .pdf-section h2,
+      .pdf-feature-header {
+        break-after: avoid;
+        page-break-after: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="pdf-document">
+    <article class="pdf-page-surface">
+      <header class="pdf-hero">
+        <div class="pdf-badge">RELEASE NOTES</div>
+
+        <h1>
+          Was ist neu in
+          <span>Patch 1.3.9</span>
+        </h1>
+
+        <p class="pdf-subtitle">Modernisierung &amp; Verbesserungen</p>
+      </header>
+
+      <section class="pdf-content">
+        <div class="pdf-meta-grid">
+          <div class="pdf-meta-card">
+            <p class="pdf-meta-label">Start Datum</p>
+            <p class="pdf-meta-value">23.04.2026</p>
+          </div>
+
+          <div class="pdf-meta-card">
+            <p class="pdf-meta-label">Release Datum</p>
+            <p class="pdf-meta-value">30.04.2026</p>
+          </div>
+        </div>
+
+        
+        <section class="pdf-section" id="pdf-section-0">
+          <h2>Technical Improvements</h2>
+
+          <div class="pdf-card-list">
+            
+                <article class="pdf-feature-card" id="pdf-feature-0-0">
+                  <div class="pdf-feature-header">
+                    <h3><a href="https://softway-ag.atlassian.net/browse/SEDHUB-724" target="_blank" rel="noopener noreferrer">SEDHUB-724</a></h3>
+                    
+                  </div>
+
+                  
+                    <ul>
+                      <li>Implementierung FI-Rechnung: Refactoring der SD-/FI-Aufrufe</li>
+                    </ul>
+                  
+                </article>
+              
+                <article class="pdf-feature-card" id="pdf-feature-0-1">
+                  <div class="pdf-feature-header">
+                    <h3><a href="https://softway-ag.atlassian.net/browse/SEDHUB-711" target="_blank" rel="noopener noreferrer">SEDHUB-711</a></h3>
+                    
+                  </div>
+
+                  
+                    <ul>
+                      <li>Neuer E-Mail Empfängerfilter für E-Rechnungsversand (verhindert versehentliches senden im Testsystem an produktive Mail-Adressen)</li>
+                    </ul>
+                  
+                </article>
+              
+          </div>
+        </section>
+      
+        <section class="pdf-section" id="pdf-section-1">
+          <h2>Bug Fixes</h2>
+
+          <div class="pdf-card-list">
+            
+                <article class="pdf-feature-card" id="pdf-feature-1-0">
+                  <div class="pdf-feature-header">
+                    <h3><a href="https://softway-ag.atlassian.net/browse/SEDHUB-740" target="_blank" rel="noopener noreferrer">SEDHUB-740</a></h3>
+                    
+                  </div>
+
+                  
+                    <ul>
+                      <li>Polen Korrekturrechnung - Fehler: invalid check sum(position net) behoben</li>
+                    </ul>
+                  
+                </article>
+              
+                <article class="pdf-feature-card" id="pdf-feature-1-1">
+                  <div class="pdf-feature-header">
+                    <h3><a href="https://softway-ag.atlassian.net/browse/SEDHUB-728" target="_blank" rel="noopener noreferrer">SEDHUB-728</a></h3>
+                    
+                  </div>
+
+                  
+                    <ul>
+                      <li>Anzahl der Nachkommastellen für PriceAmount erhöht (Verhindert Validierungsfehler)</li>
+                    </ul>
+                  
+                </article>
+              
+                <article class="pdf-feature-card" id="pdf-feature-1-2">
+                  <div class="pdf-feature-header">
+                    <h3><a href="https://softway-ag.atlassian.net/browse/SEDHUB-724" target="_blank" rel="noopener noreferrer">SEDHUB-724</a></h3>
+                    
+                  </div>
+
+                  
+                    <ul>
+                      <li>Implementierung FI-Rechnung: Refactoring der SD-/FI-Aufrufe</li>
+                    </ul>
+                  
+                </article>
+              
+          </div>
+        </section>
+      
+
+        <footer class="pdf-footer">
+          <strong>GEC Produkt Management</strong>
+          <span>Generated on: 27.05.2026</span>
+        </footer>
+      </section>
+    </article>
+  </main>
+
+  <script id="release-notes-editor-data" type="application/json">
+{"releaseNotes":{"pageTitle":"GEC Release Notes","badge":"RELEASE NOTES","titlePrefix":"Was ist neu in","patchVersion":"Patch 1.3.9","subtitle":"Modernisierung & Verbesserungen","startDateLabel":"Start Datum","startDate":"23.04.2026","releaseDateLabel":"Release Datum","releaseDate":"30.04.2026","featureTitle":"Release Notes","sections":[{"title":"Technical Improvements","type":"feature","items":[{"title":"SEDHUB-724","link":"https://softway-ag.atlassian.net/browse/SEDHUB-724","meta":"","children":["Implementierung FI-Rechnung: Refactoring der SD-/FI-Aufrufe"]},{"title":"SEDHUB-711","link":"https://softway-ag.atlassian.net/browse/SEDHUB-711","meta":"","children":["Neuer E-Mail Empfängerfilter für E-Rechnungsversand (verhindert versehentliches senden im Testsystem an produktive Mail-Adressen)"]}]},{"title":"Bug Fixes","type":"feature","items":[{"title":"SEDHUB-740","link":"https://softway-ag.atlassian.net/browse/SEDHUB-740","meta":"","children":["Polen Korrekturrechnung - Fehler: invalid check sum(position net) behoben"]},{"title":"SEDHUB-728","link":"https://softway-ag.atlassian.net/browse/SEDHUB-728","meta":"","children":["Anzahl der Nachkommastellen für PriceAmount erhöht (Verhindert Validierungsfehler)"]},{"title":"SEDHUB-724","link":"https://softway-ag.atlassian.net/browse/SEDHUB-724","meta":"","children":["Implementierung FI-Rechnung: Refactoring der SD-/FI-Aufrufe"]}]}],"footerOwner":"GEC Produkt Management","generatedOnLabel":"Generated on:","generatedOn":"27.05.2026"},"theme":{"zoom":100,"jiraLinksEnabled":true,"effectiveZoom":100,"fitMode":"manual","templateVariant":"softwayRed","colorPreset":"red","primaryColor":"#d9363e","backgroundColor":"#fff1f1","cardColor":"#ffffff","featureBoxColor":"#fff7f7","metaBoxColor":"#ffffff","metaBadgeColor":"#ffffff","titleSize":54,"subtitleSize":17,"metaLabelSize":12,"metaSize":22,"sectionTitleSize":24,"featureTitleSize":15,"subFeatureSize":15,"footerSize":13,"metaBadgeSize":11,"titleFamily":"Arial, sans-serif","subtitleFamily":"Arial, sans-serif","metaLabelFamily":"Arial, sans-serif","metaFamily":"Arial, sans-serif","sectionTitleFamily":"Arial, sans-serif","featureTitleFamily":"Arial, sans-serif","subFeatureFamily":"Arial, sans-serif","footerFamily":"Arial, sans-serif","metaBadgeFamily":"Arial, sans-serif"},"exportType":"pdf"}
+  </script>
+</body>
+</html>
+  
